@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="https://irp.cdn-website.com/bed22859/site_favicon_16_1684441777650.ico" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/maskable_icon.png" />
+     </head>
+  <body id="dmRoot" data-page-alias="home" class="dmRoot dmDesktopBody fix-mobile-scrolling addCanvasBorder dmLargeBody" style="padding:0;margin:0;">
+    <div id="root"></div>
+    
+
+<script type="text/javascript">
+  window._currentDevice = 'desktop';
+  window.Parameters = window.Parameters || {
+      HomeUrl: 'https://www.pupstoken.com/',
+      AccountUUID: '7d3c958e94d34a5a8ee05aec09ca5803',
+      SystemID: 'US_DIRECT_PRODUCTION',
+      SiteAlias: 'bed22859',
+      SiteType: atob('RFVEQU9ORQ=='),
+      PublicationDate: 'Sat Apr 13 06:18:18 UTC 2024',
+      ExternalUid: null,
+      IsSiteMultilingual: false,
+      InitialPostAlias: '',
+      InitialDynamicItem: '',
+      DynamicPageInfo: {
+          isDynamicPage: false,
+          base64JsonRowData: 'null',
+      },
+      InitialPageAlias: 'home',
+      InitialPageUuid: 'd58fe94e67f7418387d2d3204d81b632',
+      InitialPageId: '29271303',
+      InitialEncodedPageAlias: 'aG9tZQ==',
+      CurrentPageUrl: '',
+      IsCurrentHomePage: true,
+      AllowAjax: false,
+      AfterAjaxCommand: null,
+      HomeLinkText: 'Back To Home',
+      UseGalleryModule: false,
+      CurrentThemeName: 'Layout Theme',
+      ThemeVersion: '43500',
+      DefaultPageAlias: '',
+      RemoveDID: true,
+      WidgetStyleID: null,
+      IsHeaderFixed: false,
+      IsHeaderSkinny: false,
+      IsBfs: true,
+      StorePageAlias: 'null',
+      StorePagesUrls: 'e30=',
+      IsNewStore: 'false',
+      StorePath: '',
+      StoreId: 'null',
+      StoreVersion: 0,
+      StoreBaseUrl: '',
+      StoreCleanUrl: true,
+      StoreDisableScrolling: true,
+      IsStoreSuspended: false,
+      NotificationSubDomain: 'pupstoken',
+      HasCustomDomain: true,
+      SimpleSite: false,
+      showCookieNotification: false,
+      cookiesNotificationMarkup: 'null',
+      translatedPageUrl: '',
+      isFastMigrationSite: false,
+      sidebarPosition: 'NA',
+      currentLanguage: 'en',
+      currentLocale: 'en',
+      NavItems: '{}',
+      errors: {
+          general: 'There was an error connecting to the page.<br/> Make sure you are not offline.',
+          password: 'Incorrect name/password combination',
+          tryAgain: 'Try again'
+      },
+      NavigationAreaParams: {
+          ShowBackToHomeOnInnerPages: true,
+          NavbarSize: -1,
+          NavbarLiveHomePage: 'https://www.pupstoken.com/',
+          BlockContainerSelector: '.dmBody',
+          NavbarSelector: '#dmNav:has(a)',
+          SubNavbarSelector: '#subnav_main'
+      },
+      hasCustomCode: false,
+      planID: '7',
+      customTemplateId: 'null',
+      siteTemplateId: 'null',
+      productId: 'DM_DIRECT',
+      disableTracking: false,
+      pageType: 'FROM_SCRATCH',
+      isRuntimeServer: true,
+      isInEditor: false,
+  };
+
+  window.Parameters.LayoutID = {};
+  window.Parameters.LayoutID[window._currentDevice] = 6;
+  window.Parameters.LayoutVariationID = {};
+  window.Parameters.LayoutVariationID[window._currentDevice] = 5;
+</script>
+
+<script>
+  function toHash(str) {
+      var hash = 5381, i = str.length;
+      while (i) {
+          hash = hash * 33 ^ str.charCodeAt(--i)
+      }
+      return hash >>> 0
+  }
+</script>
+<script>
+  (function (global) {
+  //const cacheKey = global.cacheKey;
+  const isOffline = 'onLine' in navigator && navigator.onLine === false;
+  const hasServiceWorkerSupport = 'serviceWorker' in navigator;
+  if (isOffline) {
+      console.log('offline mode');
+  }
+  if (!hasServiceWorkerSupport) {
+      console.log('service worker is not supported');
+  }
+  if (hasServiceWorkerSupport && !isOffline) {
+      window.addEventListener('load', function () {
+          const serviceWorkerPath = '/runtime-service-worker.js?v=3';
+          navigator.serviceWorker
+              .register(serviceWorkerPath, { scope: './' })
+              .then(
+                  function (registration) {
+                      // Registration was successful
+                      console.log(
+                          'ServiceWorker registration successful with scope: ',
+                          registration.scope
+                      );
+                  },
+                  function (err) {
+                      // registration failed :(
+                      console.log('ServiceWorker registration failed: ', err);
+                  }
+              )
+              .catch(function (err) {
+                  console.log(err);
+              });
+      });
+
+      // helper function to refresh the page
+      var refreshPage = (function () {
+          var refreshing;
+          return function () {
+              if (refreshing) return;
+              // prevent multiple refreshes
+              var refreshkey = 'refreshed' + location.href;
+              var prevRefresh = localStorage.getItem(refreshkey);
+              if (prevRefresh) {
+                  localStorage.removeItem(refreshkey);
+                  if (Date.now() - prevRefresh < 30000) {
+                      return; // dont go into a refresh loop
+                  }
+              }
+              refreshing = true;
+              localStorage.setItem(refreshkey, Date.now());
+              console.log('refereshing page');
+              window.location.reload();
+          };
+      })();
+
+      function messageServiceWorker(data) {
+          return new Promise(function (resolve, reject) {
+              if (navigator.serviceWorker.controller) {
+                  var worker = navigator.serviceWorker.controller;
+                  var messageChannel = new MessageChannel();
+                  messageChannel.port1.onmessage = replyHandler;
+                  worker.postMessage(data, [messageChannel.port2]);
+                  function replyHandler(event) {
+                      resolve(event.data);
+                  }
+              } else {
+                  resolve();
+              }
+          });
+      }
+  }
+})(window);
+</script>
+
+<script id="d-js-load-css">
+  /**
+   * There are a few <link> tags with CSS resource in them that are preloaded in the page
+   * in each of those there is a "onload" handler which invokes the loadCSS callback
+   * defined here.
+   * We are monitoring 3 main CSS files - the runtime, the global and the page.
+   * When each load we check to see if we can append them all in a batch. If threre
+   * is no page css (which may happen on inner pages) then we do not wait for it
+   */
+  (function () {
+    let cssLinks = {};
+    function loadCssLink(link) {
+      link.onload = null;
+      link.rel = "stylesheet";
+      link.type = "text/css";
+    }
+    
+      function checkCss() {
+        const pageCssLink = document.querySelector("[id*='CssLink']");
+        const widgetCssLink = document.querySelector("[id*='widgetCSS']");
+  
+          if (cssLinks && cssLinks.runtime && cssLinks.global && (!pageCssLink || cssLinks.page) && (!widgetCssLink || cssLinks.widget)) {
+              const storedRuntimeCssLink = cssLinks.runtime;
+              const storedPageCssLink = cssLinks.page;
+              const storedGlobalCssLink = cssLinks.global;
+              const storedWidgetCssLink = cssLinks.widget;
+  
+              storedGlobalCssLink.disabled = true;
+              loadCssLink(storedGlobalCssLink);
+  
+              if (storedPageCssLink) {
+                  storedPageCssLink.disabled = true;
+                  loadCssLink(storedPageCssLink);
+              }
+  
+              if(storedWidgetCssLink) {
+                  storedWidgetCssLink.disabled = true;
+                  loadCssLink(storedWidgetCssLink);
+              }
+  
+              storedRuntimeCssLink.disabled = true;
+              loadCssLink(storedRuntimeCssLink);
+  
+              requestAnimationFrame(() => {
+                  setTimeout(() => {
+                      storedRuntimeCssLink.disabled = false;
+                      storedGlobalCssLink.disabled = false;
+                      if (storedPageCssLink) {
+                        storedPageCssLink.disabled = false;
+                      }
+                      if (storedWidgetCssLink) {
+                        storedWidgetCssLink.disabled = false;
+                      }
+                      // (SUP-4179) Clear the accumulated cssLinks only when we're
+                      // sure that the document has finished loading and the document 
+                      // has been parsed.
+                      if(document.readyState === 'interactive') {
+                        cssLinks = null;
+                      }
+                  }, 0);
+              });
+          }
+      }
+    
+  
+    function loadCSS(link) {
+      try {
+        var urlParams = new URLSearchParams(window.location.search);
+        var noCSS = !!urlParams.get("nocss");
+        var cssTimeout = urlParams.get("cssTimeout") || 0;
+  
+        if (noCSS) {
+          return;
+        }
+        if (link.href && link.href.includes("d-css-runtime")) {
+          cssLinks.runtime = link;
+          checkCss();
+        } else if (link.id === "siteGlobalCss") {
+          cssLinks.global = link;
+          checkCss();
+        } 
+        
+        else if (link.id && link.id.includes("CssLink")) {
+          cssLinks.page = link;
+          checkCss();
+        } else if (link.id && link.id.includes("widgetCSS")) {
+          cssLinks.widget = link;
+          checkCss();
+        }
+        
+        else {
+          requestIdleCallback(function () {
+            window.setTimeout(function () {
+              loadCssLink(link);
+            }, parseInt(cssTimeout, 10));
+          });
+        }
+      } catch (e) {
+        throw e
+      }
+    }
+    window.loadCSS = window.loadCSS || loadCSS;
+  })();
+  </script>
+  
+  
+  
+  <script data-role="deferred-init" type="text/javascript">
+      /* usage: window.getDeferred(<deferred name>).resolve() or window.getDeferred(<deferred name>).promise.then(...)*/
+      function Def() {
+          this.promise = new Promise((function (a, b) {
+              this.resolve = a, this.reject = b
+          }).bind(this))
+      }
+  
+      const defs = {};
+      window.getDeferred = function (a) {
+          return null == defs[a] && (defs[a] = new Def), defs[a]
+      }
+      window.waitForDeferred = function (b, a, c) {
+          let d = window?.getDeferred?.(b);
+          d
+              ? d.promise.then(a)
+              : c && ["complete", "interactive"].includes(document.readyState)
+                  ? setTimeout(a, 1)
+                  : c
+                      ? document.addEventListener("DOMContentLoaded", a)
+                      : console.error(`Deferred  does not exist`);
+      };
+  </script>
+  <script>
+    var isWLR = false;
+
+    window.customWidgetsFunctions = {};
+    window.customWidgetsStrings = {};
+    window.collections = {};
+    window.currentLanguage = "ENGLISH"
+    window.isSitePreview = false;
+</script>
+<script type="text/javascript">
+
+    var d_version = "production_4500";
+    var build = "2024-06-16T12_49_46";
+    window['v' + 'ersion'] = d_version;
+
+    function buildEditorParent() {
+        window.isMultiScreen = true;
+        window.editorParent = {};
+        window.previewParent = {};
+        window.assetsCacheQueryParam = "?version=2024-06-16T12_49_46";
+        try {
+            var _p = window.parent;
+            if (_p && _p.document && _p.$ && _p.$.dmfw) {
+                window.editorParent = _p;
+            } else if (_p.isSitePreview) {
+                window.previewParent = _p;
+            }
+        } catch (e) {
+
+        }
+    }
+
+    buildEditorParent();
+</script>
+
+<!-- Load jQuery -->
+<script type="text/javascript" id='d-js-jquery'
+        src="https://static.cdn-website.com/libs/jquery/jquery-3.7.0.min.js"></script>
+<!-- End Load jQuery -->
+<!-- Injecting site-wide before scripts -->
+<!-- End Injecting site-wide to the head -->
+
+
+<script>
+    var _jquery = window.$;
+
+    var jqueryAliases = ['$', 'jquery', 'jQuery'];
+
+    jqueryAliases.forEach((alias) => {
+        Object.defineProperty(window, alias, {
+            get() {
+                return _jquery;
+            },
+            set() {
+                console.warn("Trying to over-write the global jquery object!");
+            }
+        });
+    });
+    window.jQuery.migrateMute = true;
+</script>
+<script>
+    window.cookiesNotificationMarkupPreview = 'null';
+</script>
+
+<!-- HEAD RT JS Include -->
+<script id='d-js-params'>
+    window.INSITE = window.INSITE || {};
+    window.INSITE.device = "desktop";
+
+    window.rtCommonProps = {};
+    rtCommonProps["rt.ajax.ajaxScriptsFix"] =true;
+    rtCommonProps["rt.pushnotifs.sslframe.encoded"] = 'aHR0cHM6Ly97c3ViZG9tYWlufS5wdXNoLW5vdGlmcy5jb20=';
+    rtCommonProps["runtimecollector.url"] = 'https://rtc.multiscreensite.com';
+    rtCommonProps["performance.tabletPreview.removeScroll"] = 'false';
+    rtCommonProps["inlineEditGrid.snap"] =true;
+    rtCommonProps["popup.insite.cookie.ttl"] = '0.5';
+    rtCommonProps["rt.pushnotifs.force.button"] =true;
+    rtCommonProps["common.mapbox.token"] = 'pk.eyJ1IjoiZGFubnliMTIzIiwiYSI6ImNqMGljZ256dzAwMDAycXBkdWxwbDgzeXYifQ.Ck5P-0NKPVKAZ6SH98gxxw';
+    rtCommonProps["common.mapbox.js.override"] =false;
+    rtCommonProps["common.here.appId"] = 'iYvDjIQ2quyEu0rg0hLo';
+    rtCommonProps["common.here.appCode"] = '1hcIxLJcbybmtBYTD9Z1UA';
+    rtCommonProps["isCoverage.test"] =false;
+    rtCommonProps["ecommerce.ecwid.script"] = 'https://app.multiscreenstore.com/script.js';
+    rtCommonProps["feature.flag.mappy.kml"] =false;
+    rtCommonProps["common.resources.dist.cdn"] =true;
+    rtCommonProps["common.build.dist.folder"] = 'production/4500';
+    rtCommonProps["common.resources.cdn.host"] = 'https://static.cdn-website.com';
+    rtCommonProps["common.resources.folder"] = 'https://static.cdn-website.com/mnlt/production/4500';
+    rtCommonProps["feature.flag.runtime.backgroundSlider.preload.slowly"] =true;
+    rtCommonProps["feature.flag.runtime.photoswipe.fix"] =true;
+    rtCommonProps["feature.flag.runtime.newAnimation.enabled"] =true;
+    rtCommonProps["feature.flag.runtime.newAnimation.respectCssAnimationProps.enabled"] =true;
+    rtCommonProps["feature.flag.runtime.newAnimation.jitAnimation.enabled"] =true;
+    rtCommonProps["feature.flag.sites.google.analytics.gtag"] =true;
+    rtCommonProps["feature.flag.runOnReadyNewTask"] =true;
+    rtCommonProps["isAutomation.test"] =false;
+
+    
+    rtCommonProps['common.mapsProvider'] = 'mapbox';
+    
+    rtCommonProps['common.mapsProvider.version'] = '0.52.0';
+    rtCommonProps['common.geocodeProvider'] = 'here';
+    rtCommonProps['common.map.defaults.radiusSize'] = '1500';
+    rtCommonProps['common.map.defaults.radiusBg'] = 'rgba(255, 255, 255, 0.4)';
+    rtCommonProps['common.map.defaults.strokeColor'] = 'rgba(255, 255, 255, 1)';
+    rtCommonProps['common.map.defaults.strokeSize'] = '2';
+    rtCommonProps['server.for.resources'] = '';
+    rtCommonProps['feature.flag.lazy.widgets'] = true;
+    rtCommonProps['feature.flag.single.wow'] = false;
+    rtCommonProps['feature.flag.disallowPopupsInEditor'] = true;
+    rtCommonProps['feature.flag.mark.anchors'] = true;
+    rtCommonProps['captcha.public.key'] = '6LffcBsUAAAAAMU-MYacU-6QHY4iDtUEYv_Ppwlz';
+    rtCommonProps['captcha.invisible.public.key'] = '6LeiWB8UAAAAAHYnVJM7_-7ap6bXCUNGiv7bBPME';
+    rtCommonProps["images.sizes.small"] =160;
+    rtCommonProps["images.sizes.mobile"] =640;
+    rtCommonProps["images.sizes.tablet"] =1280;
+    rtCommonProps["images.sizes.desktop"] =1920;
+    rtCommonProps["modules.resources.cdn"] =true;
+    rtCommonProps["import.images.storage.imageCDN"] = 'https://lirp.cdn-website.com/';
+    rtCommonProps["facebook.api.version"] = '7.0';
+    rtCommonProps["feature.flag.runtime.inp.threshold"] =150;
+    rtCommonProps["feature.flag.performance.logs"] =true;
+    rtCommonProps["site.widget.form.captcha.type"] = 'g_recaptcha';
+    rtCommonProps["friendly.captcha.site.key"] = 'FCMGSQG9GVNMFS8K';
+    rtCommonProps["cookiebot.mapbox.consent.category"] = 'marketing';
+    rtCommonProps["platform.monolith.personalization.dateTimeCondition.popupMsgAction.moveToclient.enabled"]=false;
+
+    // feature flags that's used out of runtime module (in  legacy files)
+    rtCommonProps["site.runtime.video.background.ssr"] =true;
+
+    window.rtFlags = {};
+    rtFlags["unsuspendEcwidStoreOnRuntime.enabled"] =true;
+    rtFlags["keyboard.navigation.enabled"] =true;
+    rtFlags["scripts.widgetCount.enabled"] =true;
+    rtFlags["ecom.ecwid.categoryPage.modifyLinks"] = true;
+    rtFlags["ecom.ecwidNewUrlStructure.enabled"] = false;
+    rtFlags["ecom.ecwid.old.store.fix.scrolling.enabled"] = true;
+    rtFlags["ecom.ecwid.old.store.fix.facebook.share"] = true;
+    rtFlags["ecom.ecwid.fallBackInCaseLinksNotFound.enabled"] = true;
+    rtFlags["feature.flag.photo.gallery.exact.size"] =false;
+    rtFlags["new.store.fix.ecwid.back.bug"] =true;
+    rtFlags["facebook.runtime.widgets.upgrade"] =true;
+    rtFlags["ecom.ecwid.solve.url.modifications"] = true;
+    rtFlags["ecom.ecwid.configOptions"] = true;
+    rtFlags["geocode.search.localize"] =false;
+    rtFlags["feature.flag.runtime.newAnimation.asyncInit.setTimeout.enabled"] =false;
+    rtFlags["site.contact.form.fix.for.attribute"] =true;
+    rtFlags["contact.form.date.format.enabled"] = true;
+    rtFlags["twitter.heightLimit.enabled"] = true;
+    rtFlags["ecom.ecwid.fixTranslations.enabled"] = true;
+    rtFlags["runtime.load.script.native"] =true;
+    rtFlags["editor.classicHybrid.photogallery.fix"] =true;
+    rtFlags["runtime.lottieOverflow"] =false;
+    rtFlags["runtime.monitoring.sentry.ignoreErrors"] = "";
+    rtFlags["ecom.ecwid.old.store.fix.scrolling.detect.enable"] =false;
+</script>
+<script src="https://static.cdn-website.com/mnlt/production/4500/_dm/s/rt/dist/scripts/d-js-one-runtime-unified-desktop.min.js"  id="d-js-core"></script>
+<!-- End of HEAD RT JS Include -->
+<script src="https://static.cdn-website.com/mnlt/production/4500/_dm/s/rt/dist/scripts/d-js-jquery-migrate.min.js" ></script>
+<script>
+    
+    $(window).bind("orientationchange", function (e) {
+        $.layoutManager.initLayout();
+        
+    });
+    $(document).resize(function () {
+        
+    });
+</script>
+<script type="text/javascript" id="d_track_campaign">
+(function() {
+ 	var campaign = (/utm_campaign=([^&]*)/).exec(window.location.search);
+
+ 	if (campaign && campaign != null && campaign.length > 1) {
+ 		campaign = campaign[1];
+ 		document.cookie = "_dm_rt_campaign=" + campaign + ";expires=" + new Date().getTime() + 24*60*60*1000 + ";domain=" + window.location.hostname + ";path=/";
+ 	}
+}());
+</script>
+<script type="text/javascript" >
+  var _dm_gaq = {};
+  var _gaq = _gaq || [];
+  var _dm_insite = [];
+</script>
+
+<script type="text/javascript" id="d_track_sp">
+;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//d32hwlnfiv2gyn.cloudfront.net/sp-2.0.0-dm-0.1.min.js","snowplow"));
+window.dmsnowplow  = window.snowplow;
+
+dmsnowplow('newTracker', 'cf', 'd32hwlnfiv2gyn.cloudfront.net', { // Initialise a tracker
+  appId: 'bed22859'
+});
+
+// snowplow queries element styles so we wait until CSS calculations are done.
+requestAnimationFrame(() => {
+	dmsnowplow('trackPageView');
+	_dm_insite.forEach((rule) => {
+		// Specifically in popup only the client knows if it is shown or not so we don't always want to track its impression here
+		// the tracking is in popup.js
+		if (rule.actionName !== "popup") {
+			dmsnowplow('trackStructEvent', 'insite', 'impression', rule.ruleType, rule.ruleId);
+		}
+		window?.waitForDeferred?.('dmAjax', () => {
+			$.DM.events.trigger('event-ruleTriggered', {value: rule});
+		});
+	});
+});
+</script>
+
+    <script type="module" src="/src/main.tsx"></script>
+    <style>
+			#dm .dmInner div.dmHeader.u_hcontainer{
+				padding-top: 12.5px !important;
+				padding-Bottom: 12.5px !important;
+			}
+			</style>
+  </body>
+</html>
